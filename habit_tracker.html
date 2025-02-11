@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="css/style_habit_tracker.css">
+</head>
+<body>
+<div class="wrapper">
+  <header class="container_1">
+    <nav>
+      <ul class="left-nav">
+        <li><a href="profile.html">Profile</a></li>
+        <li class="Habitat"><a href="#" class="active">Habitat</a></li>
+        <li><a href="#">Diagrams</a></li>
+      </ul>
+      <span class="logo">HabitFlow</span>
+      <ul class="right-nav">
+        <li><a href="#">Settings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div class="container_2">
+  <h1 id="habit-title"></h1>
+  <p id="habit-period"></p>
+  <p id="habit-description"></p>
+
+  <!-- Трекер привычки -->
+  <div class="habit-tracker" id="habit-tracker"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const habitName = params.get("habit");
+
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
+    let habit = habits.find(h => h.name === habitName);
+
+    if (!habit) {
+      alert("Habit not found!");
+      window.location.href = "profile.html";
+      return;
+    }
+
+    document.getElementById("habit-title").textContent = habit.name;
+    document.getElementById("habit-period").textContent = `From ${habit.startDate} to ${habit.endDate}`;
+    document.getElementById("habit-description").textContent = habit.description;
+
+    generateTracker(habit);
+  });
+
+  function generateTracker(habit) {
+    let trackerContainer = document.getElementById("habit-tracker");
+    trackerContainer.innerHTML = "";
+
+    let startDate = new Date(habit.startDate);
+    let endDate = new Date(habit.endDate);
+
+    let daysBetween = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+    let totalCircles = calculateCircles(habit.frequency, daysBetween);
+
+    for (let i = 0; i < totalCircles; i++) {
+      let circle = document.createElement("div");
+      circle.classList.add("tracker-circle");
+      circle.addEventListener("click", function () {
+        circle.classList.toggle("completed");
+      });
+      trackerContainer.appendChild(circle);
+    }
+  }
+
+  function calculateCircles(frequency, days) {
+    if (frequency === "Daily") return days;
+    if (frequency === "Weekly") return Math.ceil(days / 7);
+    if (frequency === "Every 2 Weeks") return Math.ceil(days / 14);
+    if (frequency === "Monthly") return Math.ceil(days / 30);
+    if (frequency === "Every 6 Months") return Math.ceil(days / 180);
+    if (frequency === "Yearly") return Math.ceil(days / 365);
+    return 0;
+  }
+</script>
+
+</body>
+</html>

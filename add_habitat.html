@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Habit</title>
+    <link rel="stylesheet" href="css/style_add_habitat.css">
+</head>
+<body>
+<div class="wrapper">
+    <header class="container_1">
+        <nav>
+            <ul class="left-nav">
+                <li><a href="profile.html">Profile</a></li>
+                <li class="Habitat"><a href="#" class="active">Habitat</a></li>
+                <li><a href="#">Diagrams</a></li>
+            </ul>
+            <span class="logo">HabitFlow</span>
+            <ul class="right-nav">
+                <li><a href="#">Settings</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+
+<div class="container_2">
+    <div class="content">
+        <!-- Форма ввода -->
+        <div class="form-section">
+            <input type="text" id="habit-name" placeholder="Name of habit">
+
+            <!-- Категория -->
+            <select id="habit-category" required>
+                <option value="" disabled selected hidden>Category</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+            </select>
+
+            <input type="text" id="habit-description" placeholder="Describe habit">
+
+            <!-- Частота выполнения -->
+            <select id="habit-frequency" required>
+                <option value="" disabled selected hidden>Frequency of execution</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Every 2 Weeks">Every 2 Weeks</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Every 6 Months">Every 6 Months</option>
+                <option value="Yearly">Yearly</option>
+            </select>
+
+            <!-- Дата окончания -->
+            <input type="text" id="habit-end-date" placeholder="End Date" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
+
+            <button class="add-button" onclick="saveHabit()">Add</button>
+        </div>
+
+        <!-- Картинка -->
+        <div class="image-section">
+            <img src="img/habitat_img.svg" alt="Meditation Illustration">
+        </div>
+    </div>
+</div>
+<script>
+    function saveHabit() {
+        let currentUser = JSON.parse(localStorage.getItem("user"));
+        if (!currentUser) {
+            alert("You need to log in first!");
+            window.location.href = "registration.html";
+            return;
+        }
+
+        let habitName = document.getElementById("habit-name").value.trim();
+        let habitCategory = document.getElementById("habit-category").value;
+        let habitDescription = document.getElementById("habit-description").value.trim();
+        let habitFrequency = document.getElementById("habit-frequency").value;
+        let habitEndDate = document.getElementById("habit-end-date").value;
+
+        if (!habitName || !habitCategory || !habitDescription || !habitFrequency || !habitEndDate) {
+            alert("Please fill in all fields!");
+            return;
+        }
+
+        let startDate = new Date().toISOString().split('T')[0]; // Сегодняшняя дата (дата начала)
+
+        let newHabit = {
+            name: habitName,
+            category: habitCategory,
+            description: habitDescription,
+            frequency: habitFrequency,
+            startDate: startDate,
+            endDate: habitEndDate,
+            progress: []
+        };
+
+        let userHabits = JSON.parse(localStorage.getItem(`habits_${currentUser.email}`)) || [];
+        userHabits.push(newHabit);
+        localStorage.setItem(`habits_${currentUser.email}`, JSON.stringify(userHabits));
+
+        alert("Habit added successfully!");
+        window.location.href = `habit_tracker.html?habit=${encodeURIComponent(habitName)}`;
+    }
+</script>
+
+
+<!--<script>-->
+<!--    function saveHabit() {-->
+<!--        let habitName = document.getElementById("habit-name").value.trim();-->
+<!--        let habitCategory = document.getElementById("habit-category").value;-->
+<!--        let habitDescription = document.getElementById("habit-description").value.trim();-->
+<!--        let habitFrequency = document.getElementById("habit-frequency").value;-->
+<!--        let habitEndDate = document.getElementById("habit-end-date").value;-->
+
+<!--        if (!habitName || !habitCategory || !habitDescription || !habitFrequency || !habitEndDate) {-->
+<!--            alert("Please fill in all fields!");-->
+<!--            return;-->
+<!--        }-->
+
+<!--        let habits = JSON.parse(localStorage.getItem("habits")) || [];-->
+
+<!--        let newHabit = {-->
+<!--            name: habitName,-->
+<!--            category: habitCategory,-->
+<!--            description: habitDescription,-->
+<!--            frequency: habitFrequency,-->
+<!--            endDate: habitEndDate-->
+<!--        };-->
+
+<!--        habits.push(newHabit);-->
+<!--        localStorage.setItem("habits", JSON.stringify(habits));-->
+
+<!--        alert("Habit added successfully!");-->
+<!--        window.location.href = "list_habitats.html"; // Перенаправление на список привычек-->
+<!--    }-->
+<!--</script>-->
+<!--<script>-->
+<!--    function saveHabit() {-->
+<!--        let habitName = document.getElementById("habit-name").value.trim();-->
+<!--        let habitCategory = document.getElementById("habit-category").value;-->
+<!--        let habitDescription = document.getElementById("habit-description").value.trim();-->
+<!--        let habitFrequency = document.getElementById("habit-frequency").value;-->
+<!--        let habitEndDate = document.getElementById("habit-end-date").value;-->
+
+<!--        if (!habitName || !habitCategory || !habitDescription || !habitFrequency || !habitEndDate) {-->
+<!--            alert("Please fill in all fields!");-->
+<!--            return;-->
+<!--        }-->
+
+<!--        let startDate = new Date().toISOString().split('T')[0]; // Сегодняшняя дата (дата начала)-->
+
+<!--        let habit = {-->
+<!--            name: habitName,-->
+<!--            category: habitCategory,-->
+<!--            description: habitDescription,-->
+<!--            frequency: habitFrequency,-->
+<!--            startDate: startDate,-->
+<!--            endDate: habitEndDate,-->
+<!--            progress: [] // Пустой массив для трекера-->
+<!--        };-->
+
+<!--        let habits = JSON.parse(localStorage.getItem("habits")) || [];-->
+<!--        habits.push(habit);-->
+<!--        localStorage.setItem("habits", JSON.stringify(habits));-->
+
+<!--        alert("Habit added successfully!");-->
+<!--        window.location.href = `habit_tracker.html?habit=${encodeURIComponent(habitName)}`; // Переход на трекер-->
+<!--    }-->
+<!--</script>-->
+
+
+</body>
+</html>

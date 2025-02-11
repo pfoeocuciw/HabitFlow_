@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="css/styles_profile.css">
+</head>
+<body>
+<div class="wrapper">
+  <header class="container_1">
+    <nav>
+      <ul class="left-nav">
+        <li class="profile"><a href="#" class="active">Profile</a></li>
+        <li><a href="#" id="habits-button">Habit</a></li>
+        <li><a href="#">Diagrams</a></li>
+      </ul>
+      <span class="logo">HabitFlow</span>
+      <ul class="right-nav">
+        <li><a href="#">Settings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- Основное содержимое -->
+<div class="container_2">
+  <div class="content">
+    <div class="text-section">
+      <h1 id="profile-greeting">Hello, user</h1>
+      <h2>Your habits:</h2>
+      <ul id="habits-list"></ul>
+      <p id="no-habits-message" style="display: none;">You don't have any habits yet, add them!</p>
+      <button id="add-habit-btn" style="display: none;" onclick="window.location.href='add_habitat.html'">Add habit</button>
+    </div>
+    <div class="image-section">
+      <img src="img/profile.svg" alt="">
+    </div>
+  </div>
+  <p class="motivation-text">Achieve your goals and become the best version of yourself!</p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const profileGreeting = document.getElementById("profile-greeting");
+    const habitsList = document.getElementById("habits-list");
+    const noHabitsMessage = document.getElementById("no-habits-message");
+    const addHabitBtn = document.getElementById("add-habit-btn");
+
+    // Устанавливаем приветствие
+    if (user && user.firstName && user.lastName) {
+      profileGreeting.textContent = `Hello, ${user.firstName} ${user.lastName}!`;
+    } else {
+      profileGreeting.textContent = "Hello, user!";
+    }
+
+    // Загружаем привычки из localStorage
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+    if (habits.length > 0) {
+      habitsList.innerHTML = ""; // Очищаем список перед добавлением новых элементов
+
+      habits.forEach(habit => {
+        let listItem = document.createElement("li");
+        listItem.textContent = habit.name; // Выводим только название привычки
+        habitsList.appendChild(listItem);
+      });
+
+      noHabitsMessage.style.display = "none";
+      addHabitBtn.style.display = "none";
+    } else {
+      noHabitsMessage.style.display = "block";
+      addHabitBtn.style.display = "block";
+    }
+  });
+</script>
+
+</body>
+</html>
