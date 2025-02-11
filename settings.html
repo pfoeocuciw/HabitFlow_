@@ -1,10 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Settings</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="css/styles_settings.css">
 </head>
 <body>
+<div class="wrapper">
+  <header class="container_1">
+    <nav>
+      <ul class="left-nav">
+        <li><a href="#">Profile</a></li>
+        <li><a href="#" id="habits-button">Habit</a></li>
+        <li><a href="#">Diagrams</a></li>
+      </ul>
+      <span class="logo">HabitFlow</span>
+      <ul class="right-nav">
+        <li class="settings"><a href="#" class="active">Settings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<div class="container_2">
+<div class="settings-container">
+  <form id="settings-form">
+    <div class="input-group">
+      <input type="text" id="first-name" readonly>
+    </div>
 
+    <div class="input-group">
+      <input type="text" id="last-name" readonly>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="age" min="1" placeholder="Age">
+      <label for="age">Age</label>
+    </div>
+
+    <div class="input-group">
+      <select id="gender">
+        <option value="" selected></option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <label for="gender">Male or Female</label>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="email" readonly>
+    </div>
+
+    <button type="submit" class="save-button">Save</button>
+    <button type="button" class="exit-button" onclick="logout()">Exit</button>
+  </form>
+</div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      document.getElementById("first-name").value = user.firstName || "";
+      document.getElementById("last-name").value = user.lastName || "";
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("age").value = user.age || "";
+      document.getElementById("gender").value = user.gender || "";
+    }
+
+    document.getElementById("settings-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let updatedAge = document.getElementById("age").value;
+      let updatedGender = document.getElementById("gender").value;
+
+      if (user) {
+        user.age = updatedAge;
+        user.gender = updatedGender;
+        localStorage.setItem("user", JSON.stringify(user));
+        alert("Settings saved!");
+      }
+    });
+
+    // Скрываем подписи, когда вводятся данные
+    document.getElementById("age").addEventListener("input", function () {
+      toggleLabel(this);
+    });
+
+    document.getElementById("gender").addEventListener("change", function () {
+      toggleLabel(this);
+    });
+
+    function toggleLabel(input) {
+      let label = input.nextElementSibling;
+      if (input.value) {
+        label.style.display = "none";
+      } else {
+        label.style.display = "block";
+      }
+    }
+  });
+
+  function logout() {
+    localStorage.removeItem("user");
+    alert("You have been logged out.");
+    window.location.href = "main_before_registration.html";
+  }
+</script>
 </body>
 </html>
