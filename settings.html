@@ -11,7 +11,7 @@
   <header class="container_1">
     <nav>
       <ul class="left-nav">
-        <li><a href="#">Profile</a></li>
+        <li><a href="profile.html">Profile</a></li>
         <li><a href="#" id="habits-button">Habit</a></li>
         <li><a href="#">Diagrams</a></li>
       </ul>
@@ -23,51 +23,74 @@
     </nav>
   </header>
 </div>
+
 <div class="container_2">
-<div class="settings-container">
-  <form id="settings-form">
-    <div class="input-group">
-      <input type="text" id="first-name" readonly>
-    </div>
+  <div class="settings-container">
+    <form id="settings-form">
+      <div class="input-group">
+        <input type="text" id="first-name" readonly>
+      </div>
 
-    <div class="input-group">
-      <input type="text" id="last-name" readonly>
-    </div>
+      <div class="input-group">
+        <input type="text" id="last-name" readonly>
+      </div>
 
-    <div class="input-group">
-      <input type="number" id="age" min="1" placeholder="Age">
-      <label for="age">Age</label>
-    </div>
+      <div class="input-group">
+        <input type="number" id="age" min="1" placeholder="Age">
+        <label for="age" class="field-label">Age</label>
+      </div>
 
-    <div class="input-group">
-      <select id="gender">
-        <option value="" selected></option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-      <label for="gender">Male or Female</label>
-    </div>
+      <div class="input-group">
+        <select id="gender">
+          <option value="" selected></option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="gender" class="field-label">Male or Female</label>
+      </div>
 
-    <div class="input-group">
-      <input type="text" id="email" readonly>
-    </div>
+      <div class="input-group">
+        <input type="text" id="email" readonly placeholder="Email Address">
+      </div>
 
-    <button type="submit" class="save-button">Save</button>
-    <button type="button" class="exit-button" onclick="logout()">Exit</button>
-  </form>
-</div>
+      <button type="submit" class="save-button">Save</button>
+      <button type="button" class="exit-button" onclick="logout()">Exit</button>
+    </form>
+  </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let userData = localStorage.getItem("user");
 
-    if (user) {
-      document.getElementById("first-name").value = user.firstName || "";
-      document.getElementById("last-name").value = user.lastName || "";
-      document.getElementById("email").value = user.email || "";
-      document.getElementById("age").value = user.age || "";
-      document.getElementById("gender").value = user.gender || "";
+    if (!userData) {
+      alert("No user data found! Redirecting to login...");
+      window.location.href = "registration.html";
+      return;
+    }
+
+    let user = JSON.parse(userData);
+
+    // Проверяем, есть ли email в объекте user
+    if (!user.email) {
+      alert("Error: Email is missing in user data. Please register again.");
+      localStorage.removeItem("user");
+      window.location.href = "registration.html";
+      return;
+    }
+
+    // Заполняем поля
+    document.getElementById("first-name").value = user.firstName || "";
+    document.getElementById("last-name").value = user.lastName || "";
+    document.getElementById("email").value = user.email; // Теперь email точно загрузится
+    document.getElementById("age").value = user.age || "";
+    document.getElementById("gender").value = user.gender || "";
+
+    if (user.age) {
+      document.querySelector('label[for="age"]').style.display = "none";
+    }
+    if (user.gender) {
+      document.querySelector('label[for="gender"]').style.display = "none";
     }
 
     document.getElementById("settings-form").addEventListener("submit", function (event) {
@@ -83,31 +106,8 @@
         alert("Settings saved!");
       }
     });
-
-    // Скрываем подписи, когда вводятся данные
-    document.getElementById("age").addEventListener("input", function () {
-      toggleLabel(this);
-    });
-
-    document.getElementById("gender").addEventListener("change", function () {
-      toggleLabel(this);
-    });
-
-    function toggleLabel(input) {
-      let label = input.nextElementSibling;
-      if (input.value) {
-        label.style.display = "none";
-      } else {
-        label.style.display = "block";
-      }
-    }
   });
-
-  function logout() {
-    localStorage.removeItem("user");
-    alert("You have been logged out.");
-    window.location.href = "main_before_registration.html";
-  }
 </script>
+
 </body>
 </html>
