@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagrams</title>
+  <link rel="stylesheet" href="css/styles_diagram.css">
+</head>
+<body>
+<div class="wrapper">
+  <header class="container_1">
+    <nav>
+      <ul class="left-nav">
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#">Habit</a></li>
+        <li class="Diagrams"><a href="#" class="active">Diagrams</a></li>
+      </ul>
+      <span class="logo">HabitFlow</span>
+      <ul class="right-nav">
+        <li><a href="#">Settings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<div class="container_2">
+  <h1>Choose one habit for create diagram</h1>
+
+  <div class="diagrams-content">
+    <div class="chart-image">
+      <img src="img/line_chart.svg" alt="Line Chart">
+    </div>
+
+    <div class="habit-selection">
+      <ul id="habit-list"></ul>
+      <button class="create-button" id="create-chart">Create</button>
+    </div>
+
+    <div class="chart-image">
+      <img src="img/bar_chart.svg" alt="Bar Chart">
+    </div>
+  </div>
+</div>
+
+<!--<script>-->
+<!--  document.addEventListener("DOMContentLoaded", function () {-->
+<!--    const user = JSON.parse(localStorage.getItem("user"));-->
+
+<!--    if (!user) {-->
+<!--      alert("You need to register first!");-->
+<!--      window.location.href = "registration.html";-->
+<!--      return;-->
+<!--    }-->
+
+<!--    const habitList = document.getElementById("habit-list");-->
+<!--    const createChartButton = document.getElementById("create-chart");-->
+
+<!--    let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];-->
+
+<!--    if (userHabits.length === 0) {-->
+<!--      habitList.innerHTML = "<p>You don't have any habits yet!</p>";-->
+<!--      createChartButton.disabled = true;-->
+<!--    } else {-->
+<!--      userHabits.forEach((habit) => {-->
+<!--        let listItem = document.createElement("li");-->
+<!--        listItem.textContent = habit.name;-->
+<!--        listItem.classList.add("habit-item");-->
+<!--        listItem.addEventListener("click", function () {-->
+<!--          document.querySelectorAll(".habit-item").forEach(el => el.classList.remove("selected"));-->
+<!--          listItem.classList.add("selected");-->
+<!--          createChartButton.dataset.selectedHabit = habit.name;-->
+<!--        });-->
+<!--        habitList.appendChild(listItem);-->
+<!--      });-->
+
+<!--      createChartButton.addEventListener("click", function () {-->
+<!--        let selectedHabit = createChartButton.dataset.selectedHabit;-->
+<!--        if (selectedHabit) {-->
+<!--          window.location.href = `habit_chart.html?habit=${encodeURIComponent(selectedHabit)}`;-->
+<!--        } else {-->
+<!--          alert("Please select a habit first!");-->
+<!--        }-->
+<!--      });-->
+<!--    }-->
+
+<!--    document.getElementById("home-button").addEventListener("click", function () {-->
+<!--      window.location.href = "main_after_registration.html";-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+
+
+</body>
+</html>

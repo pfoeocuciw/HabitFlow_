@@ -200,3 +200,8 @@ button {
     background: #383A2B;
     color: white;
 }
+
+.input-group input:not(:placeholder-shown) + label,
+.input-group select:not(:placeholder-shown) + label {
+    display: none;
+}
