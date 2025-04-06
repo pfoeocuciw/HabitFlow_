@@ -24,18 +24,18 @@
   </div>
 
   <!-- Основной контент -->
-  <div class="hero-section">
+  <div class="hero-section animate-on-scroll">
     <h1>Thanks to us, you will not lose your motivation<br>
       and will be able to both instill healthy habits<br>
       and get rid of bad ones.</h1>
   </div>
 
   <!-- Блок полезных привычек -->
-  <div class="habits-container">
+  <div class="habits-container animate-on-scroll">
     <h2>People often want to instill useful habits.<br>
       Here are some commonly instilled habits, maybe you'll like some of them</h2>
   </div>
-  <div class="habit-icons">
+  <div class="habit-icons animate-on-scroll">
     <div class="habit-item">
       <img src="img/water.svg" alt="Drink water">
       <p>Drink water every day</p>
@@ -51,19 +51,19 @@
   </div>
 
   <!-- Блок вредных привычек -->
-  <div class="habits-container">
+  <div class="habits-container animate-on-scroll">
     <h2>Some people get rid of bad habits</h2>
   </div>
-  <div class="habit-icons_1">
+  <div class="habit-icons_1 animate-on-scroll">
     <div class="habit-item">
       <img src="img/smoking.svg" alt="Smoking">
       <p>Smoking</p>
     </div>
-    <div class="habit-item">
+    <div class="habit-item animate-on-scroll">
       <img src="img/sweets.svg" alt="Eat a lot of sweets">
       <p>Eat a lot of sweets</p>
     </div>
-    <div class="habit-item">
+    <div class="habit-item animate-on-scroll">
       <img src="img/game.svg" alt="Gambling addiction">
       <p>Gambling addiction</p>
     </div>
@@ -71,42 +71,62 @@
   <footer>
     <p>Completed as part of a course project</p>
   </footer>
+<!--  <script>-->
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--      const profileButton = document.getElementById("profile-button");-->
+<!--      const habitsButton = document.getElementById("habits-button");-->
+
+<!--      let currentUser = JSON.parse(localStorage.getItem("user")); // Получаем текущего пользователя-->
+
+<!--      if (!currentUser) {-->
+<!--        alert("You need to register first!");-->
+<!--        window.location.href = "registration.html"; // Если нет пользователя, перенаправляем на регистрацию-->
+<!--        return;-->
+<!--      }-->
+
+<!--      let userHabits = JSON.parse(localStorage.getItem(`habits_${currentUser.email}`)) || [];-->
+
+<!--      // Переход на страницу Profile-->
+<!--      if (profileButton) {-->
+<!--        profileButton.addEventListener("click", function (event) {-->
+<!--          event.preventDefault();-->
+<!--          window.location.href = "profile.html"; // Всегда переходит в профиль-->
+<!--        });-->
+<!--      }-->
+
+<!--      // Переключение на вкладку "Habits"-->
+<!--      if (habitsButton) {-->
+<!--        habitsButton.addEventListener("click", function (event) {-->
+<!--          event.preventDefault();-->
+<!--          if (userHabits.length > 0) {-->
+<!--            window.location.href = "list_habitats.html"; // Если есть привычки-->
+<!--          } else {-->
+<!--            window.location.href = "habitat_without_value.html"; // Если привычек нет-->
+<!--          }-->
+<!--        });-->
+<!--      }-->
+<!--    });-->
+<!--  </script>-->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const profileButton = document.getElementById("profile-button");
-      const habitsButton = document.getElementById("habits-button");
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = {
+        threshold: 0.1 // элемент считается видимым, если его 10% на экране
+      };
 
-      let currentUser = JSON.parse(localStorage.getItem("user")); // Получаем текущего пользователя
-
-      if (!currentUser) {
-        alert("You need to register first!");
-        window.location.href = "registration.html"; // Если нет пользователя, перенаправляем на регистрацию
-        return;
-      }
-
-      let userHabits = JSON.parse(localStorage.getItem(`habits_${currentUser.email}`)) || [];
-
-      // Переход на страницу Profile
-      if (profileButton) {
-        profileButton.addEventListener("click", function (event) {
-          event.preventDefault();
-          window.location.href = "profile.html"; // Всегда переходит в профиль
-        });
-      }
-
-      // Переключение на вкладку "Habits"
-      if (habitsButton) {
-        habitsButton.addEventListener("click", function (event) {
-          event.preventDefault();
-          if (userHabits.length > 0) {
-            window.location.href = "list_habitats.html"; // Если есть привычки
-          } else {
-            window.location.href = "habitat_without_value.html"; // Если привычек нет
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target); // прекращаем наблюдение после появления
           }
         });
-      }
-    });
-  </script>
+      }, observerOptions);
 
+      // выбираем все элементы, которым нужно применить анимацию
+      const animateElements = document.querySelectorAll('.animate-on-scroll');
+      animateElements.forEach(el => observer.observe(el));
+    });
+
+  </script>
   </body>
   </html>

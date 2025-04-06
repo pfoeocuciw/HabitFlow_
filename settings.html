@@ -98,24 +98,14 @@
       let label = input.nextElementSibling;
       label.style.display = input.value ? "none" : "block";
     }
-  });
-
-  function logout() {
-    localStorage.removeItem(Object.keys(localStorage).find(key => key.includes("@")));
-    alert("You have been logged out.");
-    window.location.href = "main_before_registration.html";
-  }
-
 
     // Функция для скрытия подписи, если поле заполнено
     function checkLabels() {
       document.querySelectorAll(".input-group").forEach(group => {
         let input = group.querySelector("input, select");
         let label = group.querySelector("label");
-        if (input.value) {
-          label.style.display = "none";
-        } else {
-          label.style.display = "block";
+        if (input && label) {
+          label.style.display = input.value ? "none" : "block";
         }
       });
     }
@@ -123,31 +113,23 @@
     // Проверяем скрытие подписей при загрузке
     checkLabels();
 
-    // Отслеживаем изменение значений
-    ageField.addEventListener("input", checkLabels);
-    genderField.addEventListener("change", checkLabels);
+    // Отслеживаем изменение значений через заранее полученные ссылки на элементы
+    let ageField = document.getElementById("age");
+    let genderField = document.getElementById("gender");
+    if (ageField) {
+      ageField.addEventListener("input", checkLabels);
+    }
+    if (genderField) {
+      genderField.addEventListener("change", checkLabels);
+    }
+  });
 
-    document.getElementById("settings-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      user.age = ageField.value;
-      user.gender = genderField.value;
-      localStorage.setItem("user", JSON.stringify(user));
-
-      alert("Settings saved!");
-      checkLabels();
-
-
-  // Функция выхода
+  // Функция выхода определена снаружи DOMContentLoaded, чтобы её можно было вызвать из любого места
   function logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem(Object.keys(localStorage).find(key => key.includes("@")));
     alert("You have been logged out.");
     window.location.href = "main_before_registration.html";
   }
-  });
-  });
-
-
 </script>
 
 </body>

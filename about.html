@@ -29,11 +29,11 @@
     <div class="flower_left">
         <img src="img/flowers_2.svg" alt="">
     </div>
-    <h1>Nice to meet you!</h1>
-    <h2>Our names are Sophia and Stefania!</h2>
-    <h3>We are students and we want to help you track your habits</h3>
-    <h4>That is why we created this website</h4>
-    <p>&copy; 2025 HabitFlow. All rights reserved.</p>
+    <h1 class="type-effect" >Nice to meet you!</h1>
+    <h2 class="type-effect" >Our names are Sophia and Stefania!</h2>
+    <h3 class="type-effect" >We are students and we want to help you track your habits</h3>
+    <h4 class="type-effect">That is why we created this website</h4>
+    <p class="type-effect">&copy; 2025 HabitFlow. All rights reserved.</p>
     <div class="flower_right">
         <img src="img/flowers_2.svg" alt="">
     </div>
@@ -42,46 +42,101 @@
     </div>
 </div>
 
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--        const user = JSON.parse(localStorage.getItem("user"));-->
+<!--        const profileButton = document.getElementById("profile-button");-->
+<!--        const habitsButton = document.getElementById("habits-button");-->
+<!--        const diagramsButton = document.getElementById("diagrams-button");-->
+<!--        const settingsButton = document.getElementById("settings-button");-->
+<!--        const homeButton = document.getElementById("home-button");-->
+
+<!--        if (!user) {-->
+<!--            // Если пользователь не зарегистрирован, все кнопки ведут на страницу входа-->
+<!--            profileButton.addEventListener("click", () => window.location.href = "registration.html");-->
+<!--            habitsButton.addEventListener("click", () => window.location.href = "registration.html");-->
+<!--            diagramsButton.addEventListener("click", () => window.location.href = "registration.html");-->
+<!--            settingsButton.addEventListener("click", () => window.location.href = "registration.html");-->
+
+<!--            // Логотип HabitFlow ведет на страницу "до входа"-->
+<!--            homeButton.addEventListener("click", () => window.location.href = "main_before_registration.html");-->
+
+<!--        } else {-->
+<!--            // Если пользователь вошел в систему-->
+<!--            profileButton.addEventListener("click", () => window.location.href = "profile.html");-->
+
+<!--            // Проверяем, есть ли привычки у пользователя-->
+<!--            let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];-->
+<!--            habitsButton.addEventListener("click", function () {-->
+<!--                if (userHabits.length > 0) {-->
+<!--                    window.location.href = "list_habitats.html"; // Если есть привычки-->
+<!--                } else {-->
+<!--                    window.location.href = "habitat_without_value.html"; // Если привычек нет-->
+<!--                }-->
+<!--            });-->
+
+<!--            settingsButton.addEventListener("click", () => window.location.href = "settings.html");-->
+
+<!--            // Логотип HabitFlow ведет на главную после входа-->
+<!--            homeButton.addEventListener("click", () => window.location.href = "main_after_registration.html");-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const user = JSON.parse(localStorage.getItem("user"));
-        const profileButton = document.getElementById("profile-button");
-        const habitsButton = document.getElementById("habits-button");
-        const diagramsButton = document.getElementById("diagrams-button");
-        const settingsButton = document.getElementById("settings-button");
-        const homeButton = document.getElementById("home-button");
+        const rotatingImages = document.querySelectorAll(".flower_left img, .flower_right img");
 
-        if (!user) {
-            // Если пользователь не зарегистрирован, все кнопки ведут на страницу входа
-            profileButton.addEventListener("click", () => window.location.href = "registration.html");
-            habitsButton.addEventListener("click", () => window.location.href = "registration.html");
-            diagramsButton.addEventListener("click", () => window.location.href = "registration.html");
-            settingsButton.addEventListener("click", () => window.location.href = "registration.html");
-
-            // Логотип HabitFlow ведет на страницу "до входа"
-            homeButton.addEventListener("click", () => window.location.href = "main_before_registration.html");
-
-        } else {
-            // Если пользователь вошел в систему
-            profileButton.addEventListener("click", () => window.location.href = "profile.html");
-
-            // Проверяем, есть ли привычки у пользователя
-            let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];
-            habitsButton.addEventListener("click", function () {
-                if (userHabits.length > 0) {
-                    window.location.href = "list_habitats.html"; // Если есть привычки
-                } else {
-                    window.location.href = "habitat_without_value.html"; // Если привычек нет
-                }
-            });
-
-            settingsButton.addEventListener("click", () => window.location.href = "settings.html");
-
-            // Логотип HabitFlow ведет на главную после входа
-            homeButton.addEventListener("click", () => window.location.href = "main_after_registration.html");
-        }
+        rotatingImages.forEach(img => {
+            let angle = 0;
+            setInterval(() => {
+                angle = (angle + 1) % 360;
+                img.style.transform = `rotate(${angle}deg)`;
+            }, 20);
+        });
     });
-</script>
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const typingSpeed = 50; // скорость печати (100 мс на символ)
+        const delayBetweenElements = 500; // задержка между элементами (500 мс)
+
+        // Выбираем все элементы с классом type-effect
+        const elements = Array.from(document.querySelectorAll('.type-effect'));
+
+        // Сохраняем исходный текст в data-атрибут и очищаем элементы
+        elements.forEach(el => {
+            el.dataset.fullText = el.textContent;
+            el.textContent = "";
+        });
+
+        // Функция печати текста в элементе
+        function typeEffect(el, callback) {
+            const text = el.dataset.fullText;
+            let i = 0;
+            const interval = setInterval(() => {
+                el.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, typingSpeed);
+        }
+
+        // Последовательная печать для всех элементов
+        function typeElements(index = 0) {
+            if (index < elements.length) {
+                typeEffect(elements[index], () => {
+                    setTimeout(() => {
+                        typeElements(index + 1);
+                    }, delayBetweenElements);
+                });
+            }
+        }
+
+        typeElements();
+    });
+
+
+</script>
 </body>
 </html>

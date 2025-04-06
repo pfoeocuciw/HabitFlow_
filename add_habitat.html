@@ -28,7 +28,7 @@
     <div class="content">
         <!-- Форма ввода -->
         <div class="form-section">
-            <input type="text" id="habit-name" placeholder="Name of habit">
+            <input type="text" id="habit-name" placeholder="Name of habit"></input>
 
             <!-- Категория -->
             <select id="habit-category" required>
@@ -62,45 +62,45 @@
         </div>
     </div>
 </div>
-<script>
-    function saveHabit() {
-        let habitName = document.getElementById("habit-name").value.trim();
-        let habitCategory = document.getElementById("habit-category").value;
-        let habitDescription = document.getElementById("habit-description").value.trim();
-        let habitFrequency = document.getElementById("habit-frequency").value;
-        let habitEndDate = document.getElementById("habit-end-date").value;
-        let startDate = new Date().toISOString().split("T")[0]; // Сегодняшняя дата
+<!--<script>-->
+<!--    function saveHabit() {-->
+<!--        let habitName = document.getElementById("habit-name").value.trim();-->
+<!--        let habitCategory = document.getElementById("habit-category").value;-->
+<!--        let habitDescription = document.getElementById("habit-description").value.trim();-->
+<!--        let habitFrequency = document.getElementById("habit-frequency").value;-->
+<!--        let habitEndDate = document.getElementById("habit-end-date").value;-->
+<!--        let startDate = new Date().toISOString().split("T")[0]; // Сегодняшняя дата-->
 
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (!user) {
-            alert("You need to register first!");
-            window.location.href = "registration.html";
-            return;
-        }
+<!--        const user = JSON.parse(localStorage.getItem("user"));-->
+<!--        if (!user) {-->
+<!--            alert("You need to register first!");-->
+<!--            window.location.href = "registration.html";-->
+<!--            return;-->
+<!--        }-->
 
-        if (!habitName || !habitDescription || !habitEndDate) {
-            alert("Please fill in all fields!");
-            return;
-        }
+<!--        if (!habitName || !habitDescription || !habitEndDate) {-->
+<!--            alert("Please fill in all fields!");-->
+<!--            return;-->
+<!--        }-->
 
-        let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];
+<!--        let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];-->
 
-        let newHabit = {
-            name: habitName,
-            category: habitCategory,
-            description: habitDescription,
-            frequency: habitFrequency,
-            startDate: startDate,
-            endDate: habitEndDate
-        };
+<!--        let newHabit = {-->
+<!--            name: habitName,-->
+<!--            category: habitCategory,-->
+<!--            description: habitDescription,-->
+<!--            frequency: habitFrequency,-->
+<!--            startDate: startDate,-->
+<!--            endDate: habitEndDate-->
+<!--        };-->
 
-        userHabits.push(newHabit);
-        localStorage.setItem(`habits_${user.email}`, JSON.stringify(userHabits));
+<!--        userHabits.push(newHabit);-->
+<!--        localStorage.setItem(`habits_${user.email}`, JSON.stringify(userHabits));-->
 
-        alert("Habit added successfully!");
-        window.location.href = `habit_tracker.html?habit=${encodeURIComponent(habitName)}`; // Переход в трекер
-    }
-</script>
+<!--        alert("Habit added successfully!");-->
+<!--        window.location.href = `habit_tracker.html?habit=${encodeURIComponent(habitName)}`; // Переход в трекер-->
+<!--    }-->
+<!--</script>-->
 
 
 </body>
