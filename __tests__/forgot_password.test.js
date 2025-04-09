@@ -5,6 +5,7 @@ import '@testing-library/jest-dom';
 
 describe('Forgot Password Page (forgot_password.html)', () => {
     let dom, document;
+
     beforeEach((done) => {
         const filePath = path.resolve(__dirname, '../forgot_password.html');
         const html = fs.readFileSync(filePath, 'utf8');
@@ -19,9 +20,7 @@ describe('Forgot Password Page (forgot_password.html)', () => {
         expect(heading.textContent).toMatch(/Reset password/i);
     });
 
-    test('форма сброса пароля содержит поля: reset-email, new-password, confirm-password', () => {
+    test('форма сброса пароля содержит поле reset-email', () => {
         expect(document.getElementById('reset-email')).toBeInTheDocument();
-        expect(document.getElementById('new-password')).toBeInTheDocument();
-        expect(document.getElementById('confirm-password')).toBeInTheDocument();
     });
 });

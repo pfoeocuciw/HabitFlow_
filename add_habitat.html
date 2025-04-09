@@ -13,7 +13,7 @@
             <ul class="left-nav">
                 <li><a href="profile.html">Profile</a></li>
                 <li class="Habitat"><a href="#" class="active">Habitat</a></li>
-                <li><a href="#">Diagrams</a></li>
+                <li><a href="#">Notes</a></li>
             </ul>
             <span class="logo">HabitFlow</span>
             <ul class="right-nav">
@@ -26,11 +26,8 @@
 
 <div class="container_2">
     <div class="content">
-        <!-- Форма ввода -->
         <div class="form-section">
             <input type="text" id="habit-name" placeholder="Name of habit"></input>
-
-            <!-- Категория -->
             <select id="habit-category" required>
                 <option value="" disabled selected hidden>Category</option>
                 <option value="Good">Good</option>
@@ -38,8 +35,6 @@
             </select>
 
             <input type="text" id="habit-description" placeholder="Describe habit">
-
-            <!-- Частота выполнения -->
             <select id="habit-frequency" required>
                 <option value="" disabled selected hidden>Frequency of execution</option>
                 <option value="Daily">Daily</option>
@@ -49,14 +44,11 @@
                 <option value="Every 6 Months">Every 6 Months</option>
                 <option value="Yearly">Yearly</option>
             </select>
-
-            <!-- Дата окончания -->
             <input type="text" id="habit-end-date" placeholder="End Date" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
 
             <button class="add-button" onclick="saveHabit()">Add</button>
         </div>
 
-        <!-- Картинка -->
         <div class="image-section">
             <img src="img/habitat_img.svg" alt="Meditation Illustration">
         </div>
@@ -101,7 +93,5 @@
 <!--        window.location.href = `habit_tracker.html?habit=${encodeURIComponent(habitName)}`; // Переход в трекер-->
 <!--    }-->
 <!--</script>-->
-
-
 </body>
 </html>

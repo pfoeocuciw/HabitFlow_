@@ -14,28 +14,26 @@ body {
 }
 
 a {
-    text-decoration: none; /* Убираем стандартное подчеркивание */
-    color: #000000; /* Цвет текста */
-    position: relative; /* Нужно для псевдоэлемента */
+    text-decoration: none;
+    color: #000000;
+    position: relative;
 }
 
-/* Подчеркивание при наведении */
 a:hover::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -2px; /* Расстояние от текста */
+    bottom: -2px;
     width: 100%;
-    height: 2px; /* Толщина подчеркивания */
-    background-color: #2f0f05; /* Бежевый цвет подчеркивания */
+    height: 2px;
+    background-color: #2f0f05;
 }
 .left-nav a {
-    text-decoration: none; /* Убираем стандартное подчеркивание */
-    color: #000; /* Цвет текста */
+    text-decoration: none;
+    color: #000;
     position: relative;
 }
 
-/* Подчеркивание при наведении */
 .left-nav a:hover::after {
     content: "";
     position: absolute;
@@ -43,10 +41,9 @@ a:hover::after {
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background-color: #2f0f05; /* Бежевый цвет */
+    background-color: #2f0f05;
 }
 
-/* Подчеркивание активной кнопки */
 .left-nav a.active::after {
     content: "";
     position: absolute;
@@ -54,7 +51,7 @@ a:hover::after {
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background-color: #2f0f05; /* Бежевый цвет */
+    background-color: #2f0f05;
 }
 
 .wrapper {
@@ -91,7 +88,7 @@ header .right-nav {
 header .left-nav {
     flex: 1;
     justify-content: flex-start;
-    margin-left: -50px; /* Регулируйте значение, чтобы сместить левее */
+    margin-left: -50px;
 }
 
 header .right-nav {

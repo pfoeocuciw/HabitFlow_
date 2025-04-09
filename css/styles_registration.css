@@ -1,22 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-/* Общие стили */
 html, body {
     margin: 0;
     padding: 0;
-    width: 1920px; /* Фиксированная ширина */
-    height: 1080px; /* Фиксированная высота */
+    width: 1920px;
+    height: 1080px;
     font-family: 'Poppins', sans-serif;
     background-color: #6A6F4C;
-    overflow: hidden; /* Убираем прокрутку */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container {
-    width: 1920px; /* Фиксированная ширина контейнера */
-    height: 1080px; /* Фиксированная высота контейнера */
+    width: 1920px;
+    height: 1080px;
     position: relative;
 }
 
@@ -33,7 +32,7 @@ html, body {
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     position: relative;
-    z-index: 2; /* Карточка выше фона */
+    z-index: 2;
     margin: auto;
 }
 
@@ -52,26 +51,26 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1; /* Фоновая иллюстрация ниже основной */
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .illustration_fon img {
-    width: 90%; /* Размер фоновой иллюстрации */
+    width: 90%;
 }
 
 .illustration {
-    z-index: 2; /* Основная иллюстрация выше фоновой */
+    z-index: 2;
     position: relative;
 }
 
 .illustration img {
-    width: 80%; /* Размер основной иллюстрации */
+    width: 80%;
 }
 
-/* Правая сторона */
+
 .right-side {
     flex: 1;
     padding: 60px;
@@ -124,7 +123,7 @@ button {
 .login {
     background-color: #5E2611;
     color: white;
-    margin-bottom: 10px; /* Уменьшенный отступ между Login и Register */
+    margin-bottom: 10px;
 }
 
 .login:hover {
@@ -141,7 +140,7 @@ button {
     border-radius: 5px;
     text-decoration: none;
     font-size: 1.2rem;
-    margin-top: 5px; /* Поднята ближе к кнопке Login */
+    margin-top: 5px;
 }
 
 .register:hover {
@@ -153,8 +152,8 @@ button {
     font-size: 0.9rem;
     color: #6A6F4C;
     text-decoration: none;
-    margin-bottom: 10px; /* Регулирует отступ между "Forgot Password" и кнопкой Login */
-    margin-top: -10px; /* Поднимает кнопку чуть выше */
+    margin-bottom: 10px;
+    margin-top: -10px;
 }
 
 .forgot-password:hover {

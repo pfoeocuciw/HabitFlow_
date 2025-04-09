@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добавить заметку</title>
+    <link rel="stylesheet" href="css/styles_note_form.css">
+</head>
+<body>
+<div class="container">
+    <h2>Add note to habit: Habit Name</h2>
+    <form>
+        <div class="input-group">
+            <label for="note">Note:</label>
+            <textarea id="note" name="note" placeholder="Enter a note" required></textarea>
+        </div>
+        <div class="input-group">
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" hidden>
+            <label for="photo" class="file-button">Add file</label>
+        </div>
+        <div class="input-group">
+            <label for="mood">Mood:</label>
+            <select id="mood" name="mood" required>
+                <option value="" disabled selected>Choose mood:</option>
+                <option value="happy">😊 Счастливое</option>
+                <option value="neutral">😐 Нейтральное</option>
+                <option value="sad">😢 Грустное</option>
+            </select>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+    <a class="back-link" href="all_notes.html">← Back to notes</a>
+</div>
+</body>
+</html>
+<script>
+    const fileInput = document.getElementById("photo");
+    const fileNameSpan = document.getElementById("file-name");
+
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            fileNameSpan.textContent = fileInput.files[0].name;
+        } else {
+            fileNameSpan.textContent = "No file selected";
+        }
+    });
+</script>
+

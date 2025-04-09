@@ -13,9 +13,8 @@
       <ul class="left-nav">
         <li class="profile"><a href="#" class="active">Profile</a></li>
         <li><a href="#" id="habits-button">Habit</a></li>
-        <li><a href="#">Diagrams</a></li>
+        <li><a href="#">Notes</a></li>
       </ul>
-      <!-- ЛОГОТИП HabitFlow с обработчиком клика -->
       <span class="logo" id="home-button">HabitFlow</span>
       <ul class="right-nav">
         <li><a href="settings.html">Settings</a></li>
@@ -25,7 +24,6 @@
   </header>
 </div>
 
-<!-- Основное содержимое -->
 <div class="container_2">
   <div class="content">
     <div class="text-section">
@@ -50,27 +48,24 @@
 <!--    const noHabitsMessage = document.getElementById("no-habits-message");-->
 <!--    const addHabitBtn = document.getElementById("add-habit-btn");-->
 <!--    const habitsButton = document.getElementById("habits-button");-->
-<!--    const homeButton = document.getElementById("home-button"); // Добавляем обработчик клика для логотипа-->
+<!--    const homeButton = document.getElementById("home-button"); -->
 
-<!--    // Проверяем, есть ли пользователь-->
 <!--    if (!user) {-->
 <!--      alert("You need to register first!");-->
 <!--      window.location.href = "registration.html";-->
 <!--      return;-->
 <!--    }-->
 
-<!--    // Устанавливаем приветствие-->
 <!--    profileGreeting.textContent = `Hello, ${user.firstName} ${user.lastName}!`;-->
 
-<!--    // Загружаем привычки конкретного пользователя из localStorage-->
 <!--    let userHabits = JSON.parse(localStorage.getItem(`habits_${user.email}`)) || [];-->
 
 <!--    if (userHabits.length > 0) {-->
-<!--      habitsList.innerHTML = ""; // Очищаем список перед добавлением новых элементов-->
+<!--      habitsList.innerHTML = "";-->
 
 <!--      userHabits.forEach(habit => {-->
 <!--        let listItem = document.createElement("li");-->
-<!--        listItem.textContent = habit.name; // Выводим только название привычки-->
+<!--        listItem.textContent = habit.name; -->
 <!--        habitsList.appendChild(listItem);-->
 <!--      });-->
 
@@ -81,17 +76,15 @@
 <!--      addHabitBtn.style.display = "block";-->
 <!--    }-->
 
-<!--    // Добавляем обработчик на кнопку "Habit"-->
 <!--    habitsButton.addEventListener("click", function (event) {-->
 <!--      event.preventDefault();-->
 <!--      if (userHabits.length > 0) {-->
-<!--        window.location.href = "list_habitats.html"; // Если есть привычки-->
+<!--        window.location.href = "list_habitats.html";-->
 <!--      } else {-->
-<!--        window.location.href = "habitat_without_value.html"; // Если привычек нет-->
+<!--        window.location.href = "habitat_without_value.html";-->
 <!--      }-->
 <!--    });-->
 
-<!--    // Добавляем обработчик на логотип "HabitFlow"-->
 <!--    homeButton.addEventListener("click", function () {-->
 <!--      window.location.href = "main_after_registration.html";-->
 <!--    });-->

@@ -13,7 +13,7 @@
       <ul class="left-nav">
         <li><a href="profile.html">Profile</a></li>
         <li><a href="#" id="habits-button">Habit</a></li>
-        <li><a href="#">Diagrams</a></li>
+        <li><a href="#">Notes</a></li>
       </ul>
       <span class="logo">HabitFlow</span>
       <ul class="right-nav">
@@ -35,102 +35,132 @@
         <input type="text" id="last-name" readonly>
       </div>
 
-      <div class="input-group">
-        <input type="number" id="age" min="1" placeholder="Age">
-        <label for="age" class="field-label">Age</label>
-      </div>
+<!--      <div class="input-group">-->
+<!--        <input type="number" id="age" min="1" placeholder="Age">-->
+<!--        <label for="age" class="field-label">Age</label>-->
+<!--      </div>-->
 
-      <div class="input-group">
-        <select id="gender">
-          <option value="" selected></option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <label for="gender" class="field-label">Male or Female</label>
-      </div>
+<!--      <div class="input-group">-->
+<!--        <select id="gender">-->
+<!--          <option value="" selected></option>-->
+<!--          <option value="Male">Male</option>-->
+<!--          <option value="Female">Female</option>-->
+<!--          <option value="Other">Other</option>-->
+<!--        </select>-->
+<!--        <label for="gender" class="field-label">Male or Female</label>-->
+<!--      </div>-->
 
       <div class="input-group">
         <input type="text" id="email" readonly placeholder="Email Address">
       </div>
 
-      <button type="submit" class="save-button">Save</button>
       <button type="button" class="exit-button" onclick="logout()">Exit</button>
+      <button type="submit" class="save-button">Delete</button>
+    </form>
+  </div>
+</div>
+<div id="deleteModal" class="modal-overlay" style="display: none;">
+  <div class="modal-content">
+    <h3>Confirm Account Deletion</h3>
+    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+    <form action="{% url 'users:delete_account' %}" method="post">
+      {% csrf_token %}
+      <div class="modal-buttons">
+        <button type="submit" class="confirm-button">Yes, delete</button>
+        <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
+      </div>
     </form>
   </div>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    let storedEmails = Object.keys(localStorage).find(key => key.includes("@")); // Находим email в LocalStorage
-    let user = storedEmails ? JSON.parse(localStorage.getItem(storedEmails)) : null;
-
-    if (!user) {
-      alert("No user data found! Redirecting to login...");
-      window.location.href = "registration.html";
-      return;
-    }
-
-    document.getElementById("first-name").value = user.firstName || "";
-    document.getElementById("last-name").value = user.lastName || "";
-    document.getElementById("email").value = storedEmails || "No email found";
-    document.getElementById("age").value = user.age || "";
-    document.getElementById("gender").value = user.gender || "";
-
-    document.getElementById("settings-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      user.age = document.getElementById("age").value;
-      user.gender = document.getElementById("gender").value;
-
-      localStorage.setItem(storedEmails, JSON.stringify(user));
-      alert("Settings saved!");
-    });
-
-    document.getElementById("age").addEventListener("input", function () {
-      toggleLabel(this);
-    });
-
-    document.getElementById("gender").addEventListener("change", function () {
-      toggleLabel(this);
-    });
-
-    function toggleLabel(input) {
-      let label = input.nextElementSibling;
-      label.style.display = input.value ? "none" : "block";
-    }
-
-    // Функция для скрытия подписи, если поле заполнено
-    function checkLabels() {
-      document.querySelectorAll(".input-group").forEach(group => {
-        let input = group.querySelector("input, select");
-        let label = group.querySelector("label");
-        if (input && label) {
-          label.style.display = input.value ? "none" : "block";
-        }
-      });
-    }
-
-    // Проверяем скрытие подписей при загрузке
-    checkLabels();
-
-    // Отслеживаем изменение значений через заранее полученные ссылки на элементы
-    let ageField = document.getElementById("age");
-    let genderField = document.getElementById("gender");
-    if (ageField) {
-      ageField.addEventListener("input", checkLabels);
-    }
-    if (genderField) {
-      genderField.addEventListener("change", checkLabels);
-    }
-  });
-
-  // Функция выхода определена снаружи DOMContentLoaded, чтобы её можно было вызвать из любого места
   function logout() {
-    localStorage.removeItem(Object.keys(localStorage).find(key => key.includes("@")));
-    alert("You have been logged out.");
-    window.location.href = "main_before_registration.html";
+    window.location.href = "";
+  }
+
+  function openModal() {
+    document.getElementById('deleteModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('deleteModal');
+    if (event.target === modal) {
+      closeModal();
+    }
   }
 </script>
+
+<!--<script>-->
+<!--  document.addEventListener("DOMContentLoaded", function () {-->
+<!--    let storedEmails = Object.keys(localStorage).find(key => key.includes("@"));-->
+<!--    let user = storedEmails ? JSON.parse(localStorage.getItem(storedEmails)) : null;-->
+
+<!--    if (!user) {-->
+<!--      alert("No user data found! Redirecting to login...");-->
+<!--      window.location.href = "registration.html";-->
+<!--      return;-->
+<!--    }-->
+
+<!--    document.getElementById("first-name").value = user.firstName || "";-->
+<!--    document.getElementById("last-name").value = user.lastName || "";-->
+<!--    document.getElementById("email").value = storedEmails || "No email found";-->
+<!--    document.getElementById("age").value = user.age || "";-->
+<!--    document.getElementById("gender").value = user.gender || "";-->
+
+<!--    document.getElementById("settings-form").addEventListener("submit", function (event) {-->
+<!--      event.preventDefault();-->
+
+<!--      user.age = document.getElementById("age").value;-->
+<!--      user.gender = document.getElementById("gender").value;-->
+
+<!--      localStorage.setItem(storedEmails, JSON.stringify(user));-->
+<!--      alert("Settings saved!");-->
+<!--    });-->
+
+<!--    document.getElementById("age").addEventListener("input", function () {-->
+<!--      toggleLabel(this);-->
+<!--    });-->
+
+<!--    document.getElementById("gender").addEventListener("change", function () {-->
+<!--      toggleLabel(this);-->
+<!--    });-->
+
+<!--    function toggleLabel(input) {-->
+<!--      let label = input.nextElementSibling;-->
+<!--      label.style.display = input.value ? "none" : "block";-->
+<!--    }-->
+<!--    -->
+<!--    function checkLabels() {-->
+<!--      document.querySelectorAll(".input-group").forEach(group => {-->
+<!--        let input = group.querySelector("input, select");-->
+<!--        let label = group.querySelector("label");-->
+<!--        if (input && label) {-->
+<!--          label.style.display = input.value ? "none" : "block";-->
+<!--        }-->
+<!--      });-->
+<!--    }-->
+
+<!--    checkLabels();-->
+<!--    -->
+<!--    let ageField = document.getElementById("age");-->
+<!--    let genderField = document.getElementById("gender");-->
+<!--    if (ageField) {-->
+<!--      ageField.addEventListener("input", checkLabels);-->
+<!--    }-->
+<!--    if (genderField) {-->
+<!--      genderField.addEventListener("change", checkLabels);-->
+<!--    }-->
+<!--  });-->
+<!--  -->
+<!--  function logout() {-->
+<!--    localStorage.removeItem(Object.keys(localStorage).find(key => key.includes("@")));-->
+<!--    alert("You have been logged out.");-->
+<!--    window.location.href = "main_before_registration.html";-->
+<!--  }-->
+<!--</script>-->
 
 </body>
 </html>

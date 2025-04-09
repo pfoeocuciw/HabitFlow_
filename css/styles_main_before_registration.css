@@ -6,7 +6,6 @@
     padding: 0;
 }
 
-/* Запрещаем горизонтальное прокручивание */
 body {
     overflow-x: hidden;
     font-family: "Poppins", sans-serif;
@@ -102,8 +101,8 @@ header nav ul li:not(.bth) a:hover {
     background-color: #C29B8D;
     width: 100%;
     color: white;
-    padding: 20px; /* Отступы внутри контейнера */
-    text-align: center; /* Центровка текста */
+    padding: 20px;
+    text-align: center;
 }
 
 .hero--info .bth {
@@ -160,41 +159,41 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .benefits-intro {
-    display: flex; /* Flexbox для выравнивания */
-    flex-direction: column; /* Располагаем текст в столбик */
-    justify-content: center; /* Вертикальное выравнивание */
-    align-items: center; /* Горизонтальное выравнивание */
-    height: 50vh; /* Высота блока на весь экран */
-    text-align: center; /* Центрирование текста */
-    margin: 0; /* Убираем отступы */
-    padding: 0 20px; /* Добавляем отступы по бокам для мобильных устройств */
-    color: #000; /* Цвет текста */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    text-align: center;
+    margin: 0;
+    padding: 0 20px;
+    color: #000;
 }
 
 .benefits-intro h1 {
-    font-size: 2.5rem; /* Размер заголовка */
-    font-weight: 600; /* Толщина текста */
-    margin-bottom: 20px; /* Отступ снизу */
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .benefits-intro h2 {
-    font-size: 1.5rem; /* Размер подзаголовка */
-    font-weight: 400; /* Толщина текста */
-    margin-bottom: 10px; /* Отступ снизу */
-    color: #555; /* Более светлый текст */
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #555;
 }
 
 .benefits-intro h3 {
-    font-size: 1.2rem; /* Размер текста */
-    font-weight: 300; /* Тонкий текст */
-    color: #777; /* Ещё более светлый текст */
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #777;
 }
 
 
 .benefits-each {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Отступы между секциями */
+    gap: 30px;
 }
 
 .benefits-each h1 {
@@ -211,7 +210,7 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .benefits-each img {
-    width: 40px; /* Размер иконки */
+    width: 40px;
     height: 40px;
     margin-bottom: 10px;
     display: block;
@@ -229,39 +228,39 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .benefits-each > div img {
-    flex-shrink: 0; /* Фиксируем размер изображения */
+    flex-shrink: 0;
 }
 
 .benefits-each > div h1,
 .benefits-each > div p {
-    flex-grow: 1; /* Текст растягивается */
+    flex-grow: 1;
 }
 .svg-container {
-    display: flex; /* Используем Flexbox для равномерного расположения */
-    justify-content: space-between; /* Равномерное распределение между элементами */
-    align-items: center; /* Центрируем изображения по вертикали */
-    gap: 20px; /* Расстояние между изображениями */
-    padding: 20px; /* Отступы внутри контейнера */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .svg-container svg {
-    width: 80px; /* Одинаковая ширина для всех изображений */
-    height: 80px; /* Одинаковая высота для всех изображений */
-    flex-shrink: 0; /* Изображения не сжимаются */
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
 }
 
 .how-to-use {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    background-color: #C29B8D; /* Розовый фон */
+    background-color: #C29B8D;
     color: #000;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Центрируем по вертикали */
-    align-items: center; /* Центрируем по горизонтали */
-    height: 100vh; /* Высота секции — на весь экран */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
 }
 
@@ -299,15 +298,15 @@ header nav ul li:not(.bth) a:hover {
     width: 50px;
     height: 50px;
     margin: 0 auto 20px;
-    background-color: transparent; /* Прозрачный фон */
-    border: 2px solid black; /* Черная обводка */
-    border-radius: 50%; /* Круглая форма */
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    font-weight: 300; /* Тонкий текст */
-    color: black; /* Черный цвет текста */
+    font-weight: 300;
+    color: black;
 }
 
 .step h2 {
@@ -350,12 +349,12 @@ header nav ul li:not(.bth) a:hover {
     display: flex;
     align-items: center;
     gap: 20px;
-    justify-content: flex-start; /* Иконки слева, текст справа */
-    text-align: left; /* Текст выравнивается по левому краю */
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .benefit-item .icon img {
-    width: 50px; /* Размер иконки */
+    width: 50px;
     height: 50px;
     flex-shrink: 0;
 }
@@ -378,7 +377,7 @@ header nav ul li:not(.bth) a:hover {
     margin: 0;
     line-height: 1.4;
 }
-/* Контейнер для содержимого */
+
 .faq_imp {
     margin: 0;
     padding: 0;
@@ -399,14 +398,12 @@ header nav ul li:not(.bth) a:hover {
     max-width: 800px;
 }
 
-/* Заголовок */
 .faq h1 {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-/* Вопросы */
 .faq-item {
     margin: 10px 0;
     border-bottom: 1px solid #ddd;
@@ -425,7 +422,6 @@ header nav ul li:not(.bth) a:hover {
     font-weight: 400;
 }
 
-/* Кнопка-тоггл */
 .toggle {
     background: none;
     border: none;
@@ -443,21 +439,20 @@ header nav ul li:not(.bth) a:hover {
     color: #6A6F4C;
 }
 
-/* Ответы */
 .answer {
-    max-height: 0; /* Скрываем ответ */
-    overflow: hidden; /* Прячем содержимое */
-    margin-top: 0; /* Убираем отступы */
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 0;
     text-align: left;
     font-size: 1rem;
     color: #555;
     line-height: 1.5;
-    transition: max-height 0.5s ease, margin-top 0.5s ease; /* Добавляем плавный переход */
+    transition: max-height 0.5s ease, margin-top 0.5s ease;
 }
 
 .answer.show {
-    max-height: 200px; /* Достаточно для отображения текста */
-    margin-top: 10px; /* Отступ для видимого ответа */
+    max-height: 200px;
+    margin-top: 10px;
 }
 
 .basement {
@@ -465,27 +460,25 @@ header nav ul li:not(.bth) a:hover {
     padding: 0;
     background-color: #343722;
     height: 10vh;
-    display: flex; /* Используем flexbox для выравнивания */
-    justify-content: flex-end; /* Выравниваем содержимое вправо */
-    align-items: center; /* Выравниваем содержимое по вертикали */
-    text-align: right; /* Текстовый выравнивание */
-    padding-right: 20px; /* Добавляем отступ справа */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    padding-right: 20px;
 }
 
 .basement h1 {
     color: #ddd;
     font-size: smaller;
-    margin: 0; /* Убираем дополнительные отступы заголовка */
+    margin: 0;
 }
 
-/* Элементы изначально смещены вниз и невидимы */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* При добавлении класса in-view элемент становится видимым и возвращается в исходное положение */
 .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
