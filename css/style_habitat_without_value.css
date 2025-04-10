@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -28,6 +31,7 @@ a:hover::after {
     height: 2px;
     background-color: #2f0f05;
 }
+
 .left-nav a {
     text-decoration: none;
     color: #000;
@@ -66,26 +70,29 @@ a:hover::after {
 
 .wrapper {
     background-color: #F0E4DF;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
 .container_1 {
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     color: #2f0f05;
+    box-sizing: border-box;
 }
 
 header {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 header .left-nav,
@@ -93,38 +100,42 @@ header .right-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 header .left-nav {
     flex: 1;
     justify-content: flex-start;
-    margin-left: -50px;
 }
 
 header .right-nav {
     flex: 1;
     justify-content: flex-end;
 }
+
 .container_2 {
     color: #2f0f05;
     background: #ffffff;
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    min-height: 70vh;
     max-width: 1400px;
     margin: 10px auto;
     padding: 40px;
     border-radius: 20px;
+    box-sizing: border-box;
 }
 
 .container_2 h1 {
-    margin-top: 150px;
-    margin-left: 400px;
+    margin-top: 50px;
+    text-align: center;
     color: #000;
     font-weight: 500;
     margin-bottom: 10px;
 }
+
 .container_2 h2 {
-    margin-left: 600px;
+    text-align: center;
     color: #000;
     font-weight: 500;
     margin-bottom: 10px;
@@ -139,9 +150,9 @@ header .right-nav {
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 570px;
     text-decoration: none;
     display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
 .add-habit:hover {
@@ -154,4 +165,71 @@ header .right-nav {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+    
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .container_2 {
+        padding: 20px;
+    }
+    
+    .container_2 h1 {
+        margin-top: 30px;
+        font-size: 1.8rem;
+    }
+    
+    .container_2 h2 {
+        font-size: 1.4rem;
+    }
+    
+    .add-habit {
+        padding: 12px 60px;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .container_2 {
+        padding: 15px;
+    }
+    
+    .container_2 h1 {
+        margin-top: 20px;
+        font-size: 1.6rem;
+    }
+    
+    .container_2 h2 {
+        font-size: 1.2rem;
+    }
+    
+    .add-habit {
+        padding: 10px 40px;
+        font-size: 1rem;
+    }
 }

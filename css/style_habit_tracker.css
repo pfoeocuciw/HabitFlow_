@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -28,6 +31,7 @@ a:hover::after {
     height: 2px;
     background-color: #2f0f05;
 }
+
 .left-nav a {
     text-decoration: none;
     color: #000;
@@ -56,26 +60,29 @@ a:hover::after {
 
 .wrapper {
     background-color: #F0E4DF;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
 .container_1 {
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     color: #2f0f05;
+    box-sizing: border-box;
 }
 
 header {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 header .left-nav,
@@ -83,12 +90,13 @@ header .right-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 header .left-nav {
     flex: 1;
     justify-content: flex-start;
-    margin-left: -50px;
 }
 
 header .right-nav {
@@ -96,16 +104,15 @@ header .right-nav {
     justify-content: flex-end;
 }
 
-
-
 .container_2 {
     background: #ffffff;
-    width: 100vw;
+    width: 100%;
     max-width: 1400px;
     margin: 20px auto;
     padding: 40px;
     border-radius: 20px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .habit-tracker {
@@ -150,4 +157,73 @@ header .right-nav {
 
 .back-button:hover {
     background-color: #9f3f20;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+    
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .container_2 {
+        padding: 20px;
+    }
+    
+    .habit-tracker {
+        padding: 15px;
+    }
+    
+    .tracker-circle {
+        width: 25px;
+        height: 25px;
+        margin: 8px;
+    }
+    
+    .back-button {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .container_2 {
+        padding: 15px;
+    }
+    
+    .habit-tracker {
+        padding: 10px;
+    }
+    
+    .tracker-circle {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+    }
+    
+    .back-button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
 }

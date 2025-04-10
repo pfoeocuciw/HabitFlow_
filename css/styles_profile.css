@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
+
 body {
     display: flex;
     flex-direction: column;
-    background: #F0E4DF;
+    background: #6A6F4C;
     font-family: "Poppins", serif;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 a {
@@ -28,69 +31,32 @@ a:hover::after {
     height: 2px;
     background-color: #2f0f05;
 }
-.left-nav a {
-    text-decoration: none;
-    color: #000;
-    position: relative;
-}
-
-.left-nav a:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: #2f0f05;
-}
-
-.left-nav a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: #2f0f05;
-}
-
-.about {
-    position: relative;
-}
-
-
-.about::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: #2f0f05;
-}
 
 .wrapper {
-    background-color: #F0E4DF;
-    width: 100vw;
+    background-color: #ffffff;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
-.container_1 {
-    width: 1400px;
+.container {
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
-    color: #2f0f05;
+    padding: 0 20px;
+    color: black;
+    box-sizing: border-box;
 }
 
 header {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 header .left-nav,
@@ -98,12 +64,14 @@ header .right-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 header .left-nav {
     flex: 1;
     justify-content: flex-start;
-    margin-left: -50px;
+    margin-left: 0;
 }
 
 header .right-nav {
@@ -111,44 +79,196 @@ header .right-nav {
     justify-content: flex-end;
 }
 
-.container_2 {
-    color: #2f0f05;
-    background: #ffffff;
+.profile_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
     width: 100%;
-    max-width: 1400px;
-    margin: 10px auto;
-    padding: 40px;
-    border-radius: 20px;
+    background: #6A6F4C;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
-.image-section{
-    margin-left: 900px;
-    margin-top: -200px;
+
+.profile_container h1,
+.profile_container h2,
+.profile_container h3,
+.profile_container h4,
+.profile_container p {
+    margin: 10px 0;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
 }
-.motivation-text {
-    margin-left: 800px;
+
+.profile_card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-#add-habit-btn {
-    text-transform: none;
-    background-color: #5E2611;
-    color: white;
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+.profile_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile_avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 5px solid #6A6F4C;
+}
+
+.profile_avatar img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    object-fit: cover;
+}
+
+.profile_info {
+    width: 100%;
+    text-align: left;
+}
+
+.info_group {
+    margin-bottom: 20px;
+}
+
+.info_group label {
     display: block;
-    width: fit-content;
+    margin-bottom: 8px;
+    color: #2f0f05;
+    font-weight: 600;
 }
 
-#add-habit-btn:hover {
-    background-color: #9f3f20;
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.info_group p {
+    color: #333;
+    margin: 0;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
 }
 
-#add-habit-btn:active {
-    transform: scale(0.95);
+.profile_actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.profile_actions button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #6A6F4C;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 16px;
+}
+
+.profile_actions button:hover {
+    background: #5a5f3c;
+}
+
+.profile_card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header .left-nav,
+    header .right-nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile_container {
+        padding: 40px 20px;
+    }
+
+    .profile_card {
+        padding: 20px;
+    }
+
+    .profile_avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile_actions {
+        flex-direction: column;
+    }
+
+    .profile_actions button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+
+    header .left-nav,
+    header .right-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile_container {
+        padding: 30px 15px;
+    }
+
+    .profile_card {
+        padding: 15px;
+    }
+
+    .profile_avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info_group p {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .profile_actions button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }

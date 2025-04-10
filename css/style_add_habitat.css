@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -28,6 +31,7 @@ a:hover::after {
     height: 2px;
     background-color: #2f0f05;
 }
+
 .left-nav a {
     text-decoration: none;
     color: #000;
@@ -56,26 +60,29 @@ a:hover::after {
 
 .wrapper {
     background-color: #F0E4DF;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
 .container_1 {
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     color: #2f0f05;
+    box-sizing: border-box;
 }
 
 header {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 header .left-nav,
@@ -83,12 +90,13 @@ header .right-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 header .left-nav {
     flex: 1;
     justify-content: flex-start;
-    margin-left: -50px;
 }
 
 header .right-nav {
@@ -96,34 +104,37 @@ header .right-nav {
     justify-content: flex-end;
 }
 
-
 .container_2 {
     background: #ffffff;
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    min-height: 70vh;
     max-width: 1400px;
     margin: 10px auto;
     padding: 40px;
     border-radius: 20px;
     color: #2f0f05;
+    box-sizing: border-box;
 }
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 20px;
 }
 
 .form-section {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
 }
 
 .form-section input,
 .form-section select {
-    width: 50%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: none;
@@ -154,7 +165,8 @@ header .right-nav {
     background-color: #5E2611;
     color: white;
     padding: 12px 5px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     border: none;
     border-radius: 20px;
     font-size: 1.2rem;
@@ -173,11 +185,74 @@ header .right-nav {
 }
 
 .image-section {
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     justify-content: center;
 }
 
 .image-section img {
-    width: 90%;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+    
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .container_2 {
+        padding: 20px;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+    
+    .form-section {
+        max-width: 100%;
+    }
+    
+    .image-section {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .container_2 {
+        padding: 15px;
+    }
+    
+    .form-section input,
+    .form-section select {
+        font-size: 0.9rem;
+    }
+    
+    .add-button {
+        font-size: 1rem;
+    }
 }

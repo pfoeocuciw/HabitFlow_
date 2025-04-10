@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="container_1">
+  <header class="container">
     <nav>
       <ul class="left-nav">
         <li><a href="profile.html">Profile</a></li>
@@ -24,17 +24,20 @@
 </div>
 
 <div class="container_2">
-  <div class="content">
-    <div class="habit-list-section">
-      <h2>List your habits</h2>
-      <ul class="habit-list" id="habit-list"></ul>
-      <button class="add-button" onclick="location.href='add_habitat.html'">Add habit</button>
-    </div>
-    <div class="image-section">
-      <img src="img/habits_list_img.svg" alt="Habit Illustration">
+  <div class="habit-card-wrapper">
+    <div class="habit-card">
+      <div class="habit-list-section">
+        <h2>List your habits</h2>
+        <ul class="habit-list" id="habit-list"></ul>
+        <button class="add-button" onclick="location.href='add_habitat.html'">Add habit</button>
+      </div>
+      <div class="image-section">
+        <img src="img/habits_list_img.svg" alt="Habit Illustration">
+      </div>
     </div>
   </div>
 </div>
+
 <div id="deleteModal" class="modal-overlay" style="display: none;">
   <div class="modal-content">
     <h3>Delete Habit</h3>
@@ -48,12 +51,13 @@
     </form>
   </div>
 </div>
+
 <script>
     function openDeleteModal(habitId, habitName) {
     const modal = document.getElementById('deleteModal');
     const form = document.getElementById('deleteHabitForm');
     const text = document.getElementById('habit-delete-text');
-    form.action = `/habits/delete/${habitId}/`; // ⚠️ Убедись, что такой путь есть в urls.py
+    form.action = `/habits/delete/${habitId}/`;
     text.innerText = `Are you sure you want to delete the habit "${habitName}"?`;
     modal.style.display = 'flex';
   }

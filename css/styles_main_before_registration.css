@@ -18,6 +18,7 @@ a {
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 .wrapper {
@@ -26,14 +27,16 @@ img {
 }
 
 .container {
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     color: black;
+    box-sizing: border-box;
 }
 
 header {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 header nav {
@@ -41,6 +44,7 @@ header nav {
     padding: 10px 0;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 header .left-nav,
@@ -48,6 +52,8 @@ header .right-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 header .left-nav {
@@ -91,9 +97,9 @@ header nav ul li:not(.bth) a:hover {
     color: white !important;
     padding: 0;
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -106,14 +112,13 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .hero--info .bth {
-    right: 100px;
     background-color: #5E2611;
     color: white;
     border: none;
-    padding: 15px 30px; 
+    padding: 15px 30px;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 500ms ease; 
+    transition: background-color 500ms ease;
     font-size: 16px;
 }
 
@@ -122,9 +127,7 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .hero--info h1 {
-    right: 500px;
     margin-bottom: 10px;
-
 }
 
 .hero--info h2 {
@@ -134,22 +137,22 @@ header nav ul li:not(.bth) a:hover {
 }
 
 .hero--info h3 {
-    margin-top: 5px; 
-    margin-bottom: 15px; 
+    margin-top: 5px;
+    margin-bottom: 15px;
     font-size: x-large;
 }
+
 .hero-container img {
     margin-top: 20px;
-    margin-right: 50px;
-    max-width: 90%; 
+    max-width: 90%;
     height: auto;
-    border-radius: 50px; 
+    border-radius: 50px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .hero-container img:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 .benefits {
@@ -163,7 +166,7 @@ header nav ul li:not(.bth) a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    min-height: 50vh;
     text-align: center;
     margin: 0;
     padding: 0 20px;
@@ -188,7 +191,6 @@ header nav ul li:not(.bth) a:hover {
     font-weight: 300;
     color: #777;
 }
-
 
 .benefits-each {
     display: flex;
@@ -235,12 +237,14 @@ header nav ul li:not(.bth) a:hover {
 .benefits-each > div p {
     flex-grow: 1;
 }
+
 .svg-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 .svg-container svg {
@@ -260,8 +264,7 @@ header nav ul li:not(.bth) a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    text-align: center;
+    min-height: 100vh;
 }
 
 .intro h1 {
@@ -320,6 +323,7 @@ header nav ul li:not(.bth) a:hover {
     font-size: 1rem;
     color: #555;
 }
+
 .benefits_2 {
     padding: 40px 20px;
     text-align: center;
@@ -351,6 +355,7 @@ header nav ul li:not(.bth) a:hover {
     gap: 20px;
     justify-content: flex-start;
     text-align: left;
+    flex-wrap: wrap;
 }
 
 .benefit-item .icon img {
@@ -382,7 +387,7 @@ header nav ul li:not(.bth) a:hover {
     margin: 0;
     padding: 0;
     background-color: #6A6F4C;
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -459,7 +464,7 @@ header nav ul li:not(.bth) a:hover {
     margin: 0;
     padding: 0;
     background-color: #343722;
-    height: 10vh;
+    min-height: 10vh;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -482,4 +487,117 @@ header nav ul li:not(.bth) a:hover {
 .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+    
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero--info h1 {
+        font-size: 2rem;
+    }
+    
+    .hero--info h2,
+    .hero--info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .benefits-intro h1 {
+        font-size: 2rem;
+    }
+    
+    .benefits-intro h2 {
+        font-size: 1.2rem;
+    }
+    
+    .benefits-intro h3 {
+        font-size: 1rem;
+    }
+    
+    .step {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .benefit-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .benefit-item .icon {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    header .left-nav,
+    header .right-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .hero--info h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero--info h2,
+    .hero--info h3 {
+        font-size: 1rem;
+    }
+    
+    .benefits-intro h1 {
+        font-size: 1.6rem;
+    }
+    
+    .benefits-intro h2 {
+        font-size: 1rem;
+    }
+    
+    .benefits-intro h3 {
+        font-size: 0.9rem;
+    }
+    
+    .step {
+        padding: 15px;
+    }
+    
+    .step .circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .step h2 {
+        font-size: 1.1rem;
+    }
+    
+    .step p {
+        font-size: 0.9rem;
+    }
+    
+    .faq h1 {
+        font-size: 1.5rem;
+    }
+    
+    .question p {
+        font-size: 1rem;
+    }
 }
